@@ -7,14 +7,17 @@ MediCare is a comprehensive Hospital Management System designed to streamline mu
 # Features
 
 Patient :-
+
 Registration and Login: Patients can register and log in to their accounts.
 Appointment Booking: Patients can book appointments with doctors.
 
 Admin :-
+
 User Management: Manage patient,doctor accounts and other admins too.
 Appointment Management: Oversee and manage all appointments.
 
 Doctor :-
+
 Login: Doctors can log in to their accounts.
 Appointment Management: View and manage their appointments.
 Patient Records: Access patient medical history and records.
