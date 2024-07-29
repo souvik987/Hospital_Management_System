@@ -15,11 +15,19 @@ import reportRouter from "./router/ReportsRoute.js";
 const app = express();
 config({path: "./config/config.env"});
 
+const allowedOrigins = [process.env.FRONTEND_URL, process.env.DASHBOARD_URL];
+
 app.use(cors({
-     origin: "*",
-     methods: ["GET", "POST", "PUT", "DELETE"],
-     credentials: true,
-}))
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    },
+    credentials: true
+}));
 
 app.use(cookieParser());
 app.use(express.json());
