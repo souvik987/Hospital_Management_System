@@ -20,6 +20,7 @@ import AllReport from "./DoctorPage/AllReport";
 import AllAppointments from "./DoctorPage/AllAppointments";
 
 const App = () => {
+  console.log = function () {};
   const { isAuthenticated, setIsAuthenticated, setUser, user } = useContext(Context);
 
 

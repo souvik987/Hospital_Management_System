@@ -13,7 +13,7 @@ const AllReport = () => {
     const fetchUserDoctor = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/v1/user/doctor/me",
+          "https://hospital-management-system-j4vh.onrender.com/user/doctor/me",
           { withCredentials: true }
         );
         //console.log(response);
@@ -32,7 +32,7 @@ const AllReport = () => {
     const fetchReport = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/v1/reports/getall",
+          "https://hospital-management-system-j4vh.onrender.com/reports/getall",
           { withCredentials: true }
         );
         console.log(response.data)

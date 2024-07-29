@@ -60,7 +60,7 @@ const AddNewAdmin = () => {
       formdata.append("docAvatar", docAvatar);
 
       const response = await axios.post(
-        "http://localhost:4000/api/v1/user/doctor/addnew",          formdata,
+        "https://hospital-management-system-j4vh.onrender.com/user/doctor/addnew",          formdata,
         {
           withCredentials: true,
           headers: {

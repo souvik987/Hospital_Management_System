@@ -15,14 +15,14 @@ import "./App.css";
 import Messages from './Components/Messages.jsx';
 
 const App = () => {
-
+  console.log = function () {};
   const {isAuthenticated, setIsAuthenticated, user, setUser} = useContext(Context);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/v1/user/admin/me",
+          "https://hospital-management-system-j4vh.onrender.com/user/admin/me",
           { withCredentials: true }
         );
         //console.log(response);

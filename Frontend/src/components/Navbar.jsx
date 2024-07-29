@@ -18,7 +18,7 @@ const Navbar = () => {
       const fetchUserPatient = async () => {
         try {
           const response = await axios.get(
-            "http://localhost:4000/api/v1/user/patient/me",
+            "https://hospital-management-system-j4vh.onrender.com/user/patient/me",
             { withCredentials: true }
           );
           //console.log(response);
@@ -37,7 +37,7 @@ const Navbar = () => {
 
     const handleLogout = async() => {
 
-        await axios.get("http://localhost:4000/api/v1/user/patient/logout",
+        await axios.get("https://hospital-management-system-j4vh.onrender.com/user/patient/logout",
         {
             withCredentials: true
         }).then(res => {

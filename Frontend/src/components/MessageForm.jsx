@@ -12,7 +12,7 @@ const MessageForm = () => {
   const handleMessage = async(e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/v1/message/send", 
+      await axios.post("https://hospital-management-system-j4vh.onrender.com/message/send", 
         {firstName, lastName, email, phone, message},
         {
           withCredentials: true,

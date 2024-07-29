@@ -10,7 +10,7 @@ const Messages = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const {data} = await axios.get("http://localhost:4000/api/v1/message/getall",
+        const {data} = await axios.get("https://hospital-management-system-j4vh.onrender.com/message/getall",
           {withCredentials: true}
         );
        // console.log(data)
