@@ -36,7 +36,7 @@ const AppointmentForm = () => {
   const [doctors, setDoctors] = useState([]);
   useEffect(() => {
     const fetchDoctors = async() => {
-      const { data } = await axios.get("https://hospital-management-system-j4vh.onrender.com/user/doctors",
+      const { data } = await axios.get("http://localhost:4000/api/v1/user/doctors",
       { withCredentials: true } 
     );
    //console.log(data.doctors)
@@ -49,7 +49,7 @@ const AppointmentForm = () => {
     e.preventDefault();
     try {
       const hasVisitedBoolean = Boolean(hasVisited);
-      const {data} = await axios.post("https://hospital-management-system-j4vh.onrender.com/appointment/post", 
+      const {data} = await axios.post("http://localhost:4000/api/v1/appointment/post", 
       {firstName,
        lastName, 
        email, 

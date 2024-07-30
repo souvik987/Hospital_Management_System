@@ -15,7 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchAppointments = async() => {
       try {
-        const { data } = await axios.get("https://hospital-management-system-j4vh.onrender.com/appointment/getall",
+        const { data } = await axios.get("http://localhost:4000/api/v1/appointment/getall",
           {withCredentials: true}
         );
         setAppointments(data.appointments);
@@ -31,7 +31,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const {data} = await axios.get("https://hospital-management-system-j4vh.onrender.com/user/doctors",
+        const {data} = await axios.get("http://localhost:4000/api/v1/user/doctors",
           { withCredentials: true }
         );
         setDoctors(data.doctors);
@@ -44,7 +44,7 @@ const Dashboard = () => {
 
   const handleUpdateStatus = async(appointmentId, status) => {
     try {
-      const { data } = await axios.put(`https://hospital-management-system-j4vh.onrender.com/appointment/update/${appointmentId}`, {status}, 
+      const { data } = await axios.put(`http://localhost:4000/api/v1/appointment/update/${appointmentId}`, {status}, 
         {withCredentials: true}
       );
       setAppointments((preAppointments) =>

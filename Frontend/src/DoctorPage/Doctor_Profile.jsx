@@ -26,7 +26,7 @@ const Doctor_Profile = () => {
     const fetchUserDoctor = async () => {
       try {
         const response = await axios.get(
-          "https://hospital-management-system-j4vh.onrender.com/user/doctor/me",
+          "http://localhost:4000/api/v1/user/doctor/me",
           { withCredentials: true }
         );
         setIsAuthenticated(true);
@@ -77,7 +77,7 @@ const Doctor_Profile = () => {
 
   const handleFormSubmit = async () => {
     try {
-      await axios.put(`https://hospital-management-system-j4vh.onrender.com/user/doctor/${user._id}`, 
+      await axios.put(`http://localhost:4000/api/v1/user/doctor/${user._id}`, 
         formData, 
         { withCredentials: true });
       toast.success("User updated successfully");

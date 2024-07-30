@@ -17,7 +17,7 @@ const DoctorLogin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://hospital-management-system-j4vh.onrender.com/user/login",
+        "http://localhost:4000/api/v1/user/login",
         { email, password, confirmPassword, role: "Doctor" },
         {
           withCredentials: true,

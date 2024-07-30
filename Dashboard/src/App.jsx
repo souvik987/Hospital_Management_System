@@ -22,7 +22,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "https://hospital-management-system-j4vh.onrender.com/user/admin/me",
+          "http://localhost:4000/api/v1/user/admin/me",
           { withCredentials: true }
         );
         //console.log(response);
