@@ -6,6 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { Context } from "../main";
 import "./CreateReport.css"
 import axios from "axios";
+import axiosInstance from "../axiosInstance";
 const notify = (text) => toast(text);
 
 const CreateReport = () => {
@@ -15,8 +16,8 @@ const CreateReport = () => {
   useEffect(() => {
     const fetchUserDoctor = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/v1/user/doctor/me",
+        const response = await axiosInstance.get(
+          "/api/v1/user/doctor/me",
           { withCredentials: true }
         );
         //console.log(response);
@@ -85,7 +86,7 @@ const CreateReport = () => {
     };
     try {
       setLoading(true);
-        const res = await axios.post("http://localhost:4000/api/v1/reports/create", data) 
+        const res = await axiosInstance.post("/api/v1/reports/create", data) 
         console.log("Report", res.data);
         if (res.data.message === "Report successfully created") {
           notify("Report Created Sucessfully");

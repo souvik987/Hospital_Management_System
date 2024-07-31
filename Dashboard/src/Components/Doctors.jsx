@@ -3,6 +3,7 @@ import { Context } from '../main';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Navigate } from 'react-router-dom';
+import axiosInstance from '../axiosInstance';
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
@@ -12,7 +13,7 @@ const Doctors = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const {data} = await axios.get("http://localhost:4000/api/v1/user/doctors",
+        const {data} = await axiosInstance.get("/api/v1/user/doctors",
           { withCredentials: true }
         );
         setDoctors(data.doctors);

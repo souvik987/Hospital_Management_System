@@ -10,6 +10,7 @@ import {IoPersonAddSharp} from 'react-icons/io5'
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import axiosInstance from '../axiosInstance';
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
@@ -45,7 +46,7 @@ const Sidebar = () => {
 
   const handleLogout = async() => {
 
-    await axios.get("http://localhost:4000/api/v1/user/admin/logout",
+    await axiosInstance.get("/api/v1/user/admin/logout",
     {
         withCredentials: true
     }).then(res => {

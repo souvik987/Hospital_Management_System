@@ -13,6 +13,7 @@ import "./Doctor.css";
 import { Context } from "../main";
 import Sidebar from "./Sidebar";
 import { toast } from "react-toastify";
+import axiosInstance from "../axiosInstance";
 
 // *********************************************************
 const Doctor_Profile = () => {
@@ -25,8 +26,8 @@ const Doctor_Profile = () => {
   useEffect(() => {
     const fetchUserDoctor = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/v1/user/doctor/me",
+        const response = await axiosInstance.get(
+          "/api/v1/user/doctor/me",
           { withCredentials: true }
         );
         setIsAuthenticated(true);
@@ -77,7 +78,7 @@ const Doctor_Profile = () => {
 
   const handleFormSubmit = async () => {
     try {
-      await axios.put(`http://localhost:4000/api/v1/user/doctor/${user._id}`, 
+      await axiosInstance.put(`/api/v1/user/doctor/${user._id}`, 
         formData, 
         { withCredentials: true });
       toast.success("User updated successfully");

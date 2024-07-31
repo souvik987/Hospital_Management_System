@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 import axios from "axios";
 import { Context } from "../main";
 import "./AllReport.css";
+import axiosInstance from "../axiosInstance";
 
 const AllReport = () => {
   const { isAuthenticated, setIsAuthenticated, setUser, user } = useContext(Context);
@@ -12,8 +13,8 @@ const AllReport = () => {
   useEffect(() => {
     const fetchUserDoctor = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/v1/user/doctor/me",
+        const response = await axiosInstance.get(
+          "/api/v1/user/doctor/me",
           { withCredentials: true }
         );
         //console.log(response);
@@ -31,8 +32,8 @@ const AllReport = () => {
   useEffect(() => {
     const fetchReport = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/v1/reports/getall",
+        const response = await axiosInstance.get(
+          "/api/v1/reports/getall",
           { withCredentials: true }
         );
         console.log(response.data)

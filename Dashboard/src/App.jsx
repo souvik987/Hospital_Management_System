@@ -13,6 +13,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import "./App.css";
 import Messages from './Components/Messages.jsx';
+import axiosInstance from './axiosInstance.js';
 
 const App = () => {
   console.log = function () {};
@@ -21,8 +22,8 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/v1/user/admin/me",
+        const response = await axiosInstance.get(
+          "/api/v1/user/admin/me",
           { withCredentials: true }
         );
         //console.log(response);

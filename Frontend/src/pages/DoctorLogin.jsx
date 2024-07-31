@@ -3,6 +3,7 @@ import { Context } from "../main";
 import { Navigate, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import axiosInstance from "../axiosInstance";
 
 const DoctorLogin = () => {
     const {setIsAuthenticated, setUser } = useContext(Context);
@@ -16,8 +17,8 @@ const DoctorLogin = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:4000/api/v1/user/login",
+      const response = await axiosInstance.post(
+        "/api/v1/user/login",
         { email, password, confirmPassword, role: "Doctor" },
         {
           withCredentials: true,

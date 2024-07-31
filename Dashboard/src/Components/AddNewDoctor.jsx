@@ -3,6 +3,7 @@ import { Context } from '../main';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const AddNewAdmin = () => {
   const { isAuthenticated } = useContext(Context);
@@ -59,8 +60,8 @@ const AddNewAdmin = () => {
       formdata.append("doctorDepartment", doctorDepartment);
       formdata.append("docAvatar", docAvatar);
 
-      const response = await axios.post(
-        "http://localhost:4000/api/v1/user/doctor/addnew",          formdata,
+      const response = await axiosInstance.post(
+        "/api/v1/user/doctor/addnew",          formdata,
         {
           withCredentials: true,
           headers: {

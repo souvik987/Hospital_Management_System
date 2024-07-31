@@ -5,6 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import {GiHamburgerMenu} from "react-icons/gi";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
+import axiosInstance from '../axiosInstance';
 
 const Navbar = () => {
     const [show, setShow] = useState(false);
@@ -17,8 +18,8 @@ const Navbar = () => {
     useEffect(() => {
       const fetchUserPatient = async () => {
         try {
-          const response = await axios.get(
-            "http://localhost:4000/api/v1/user/patient/me",
+          const response = await axiosInstance.get(
+            "/api/v1/user/patient/me",
             { withCredentials: true }
           );
           //console.log(response);
@@ -37,7 +38,7 @@ const Navbar = () => {
 
     const handleLogout = async() => {
 
-        await axios.get("http://localhost:4000/api/v1/user/patient/logout",
+        await axiosInstance.get("/api/v1/user/patient/logout",
         {
             withCredentials: true
         }).then(res => {

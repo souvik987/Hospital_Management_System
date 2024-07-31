@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import axiosInstance from '../axiosInstance';
 
 const Register = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -22,8 +23,8 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:4000/api/v1/user/patient/register",
+      const response = await axiosInstance.post(
+        "/api/v1/user/patient/register",
         {firstName, lastName, email, phone, nic, dob, gender, password, role: "Patient"},
         {
           withCredentials: true,
