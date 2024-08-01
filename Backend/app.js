@@ -52,11 +52,9 @@ app.use("/api/v1/prescriptions", prescriptionRouter);
 app.use("/api/v1/reports", reportRouter);
 
 dbConnection();
-
+app.use(errorMiddleware)
 app.get('/', (req, res) => {
     res.send('Welcome to the Hospital Management System API');
 });
-
-app.use(errorMiddleware)
 
 export default app;
