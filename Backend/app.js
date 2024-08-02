@@ -15,12 +15,23 @@ import reportRouter from "./router/ReportsRoute.js";
 const app = express();
 config({path: "./config/config.env"});
 
-app.use(cors({
-    origin: '*',
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-}));
+const allowedOrigins = [process.env.FRONTEND_URL, process.env.DASHBOARD_URL];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization", "Accept"],
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); 
 
 app.use(cookieParser());
 app.use(express.json());
@@ -41,11 +52,9 @@ app.use("/api/v1/prescriptions", prescriptionRouter);
 app.use("/api/v1/reports", reportRouter);
 
 dbConnection();
-
+app.use(errorMiddleware)
 app.get('/', (req, res) => {
     res.send('Welcome to the Hospital Management System API');
 });
-
-app.use(errorMiddleware)
 
 export default app;

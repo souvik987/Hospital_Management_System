@@ -59,8 +59,7 @@ const userSchema = new mongoose.Schema({
         url: String
     },
     address: {
-        type: String,
-        required: true
+        type: String
     }
 })
 
